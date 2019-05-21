@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8.3)
 project(keyboard)
 
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs message_generation)
-find_package(SDL REQUIRED)
-set(LIBS ${SDL_LIBRARY})
+find_package(SDL2 REQUIRED)
+#set(LIBS ${SDL_LIBRARY})
 
 #######################################
 ## Declare ROS messages and services ##
@@ -25,25 +25,30 @@ generate_messages(
 
 catkin_package(
   #INCLUDE_DIRS include
-#  LIBRARIES keyboard
+  LIBRARIES keyboard
   CATKIN_DEPENDS roscpp std_msgs message_runtime
-  DEPENDS ${LIBS}
+  #DEPENDS SDL2
 )
 
 ###########
 ## Build ##
 ###########
 
-include_directories(${catkin_INCLUDE_DIRS} ${SDL_INCLUDE_DIR})
+include_directories(${catkin_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
 
-add_executable(keyboard src/main.cpp src/keyboard.cpp)
+add_executable(keyboard_exec src/main.cpp src/keyboard.cpp)
 
+add_library(keyboard src/main.cpp src/keyboard.cpp)
 target_link_libraries(keyboard
   ${LIBS}
   ${catkin_LIBRARIES}
+  ${SDL2_LIBRARIES}
+)
+target_link_libraries(keyboard_exec
+  keyboard
 )
 
-add_dependencies(keyboard keyboard_gencpp)
+#add_dependencies(keyboard keyboard_gencpp)
 
 #############
 ## Install ##
