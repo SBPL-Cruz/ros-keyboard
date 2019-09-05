@@ -29,7 +29,7 @@ catkin_package(
   CATKIN_DEPENDS roscpp std_msgs message_runtime
   #DEPENDS SDL2
 )
-
+string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 ###########
 ## Build ##
 ###########

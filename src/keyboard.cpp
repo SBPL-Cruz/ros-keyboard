@@ -2,7 +2,7 @@
 
 keyboard::Keyboard::Keyboard( int repeat_delay, int repeat_interval )
 {
-  if (SDL_Init(SDL_INIT_VIDEO) < 0) throw std::runtime_error("Could not init SDL");
+  // if (SDL_Init(SDL_INIT_VIDEO) < 0) throw std::runtime_error("Could not init SDL");
 
   // Aditya
   // SDL_EnableKeyRepeat( repeat_delay, repeat_interval );

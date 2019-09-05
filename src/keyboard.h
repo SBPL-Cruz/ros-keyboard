@@ -1,8 +1,9 @@
 #ifndef __ROS_KEYBOARD_H__
 #define __ROS_KEYBOARD_H__
 
-#include <keyboard/Key.h>
+// #include <keyboard/Key.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_keyboard.h>
 
 namespace keyboard {
   class Keyboard {
